@@ -29,8 +29,10 @@ class BaseModel:
     def to_dict(self):
         """Returns the dictionary representation of the instance"""
 
-        ret_dict = self.__dict__
+        ret_dict = {}
+        for key, value in (self.__dict__).items():
+            ret_dict.update({key: value})
         ret_dict.update({"__class__": "{}".format(self.__class__.__name__)})
-        ret_dict["updated_at"] = datetime.isoformat(self.updated_at)
         ret_dict["created_at"] = datetime.isoformat(self.created_at)
+        ret_dict["updated_at"] = datetime.isoformat(self.updated_at)
         return (ret_dict)
