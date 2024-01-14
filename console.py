@@ -3,7 +3,8 @@
 
 
 import cmd
-
+from models import storage
+from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -25,6 +26,11 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program\n"""
         return True
 
+    def do_create(self, line):
+        """  Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id. """
+        name = BaseModel()
+        storage.save()
+        print(name.id)
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
