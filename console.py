@@ -14,6 +14,10 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
+    __classes = {
+        "BaseModel"
+    }
+
     def emptyline(self):
         """Overwrites the emptyline function."""
         pass
@@ -26,11 +30,16 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program\n"""
         return True
 
-    def do_create(self, line):
-        """  Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id. """
-        name = BaseModel()
-        storage.save()
-        print(name.id)
+    def do_create(self, arg):
+        """  Creates a new instance of a class, saves it (to the JSON file) and prints the id. """
+        if len(arg) == 0:
+            print("** class name missing **")
+        elif arg not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            arg = BaseModel()
+            storage.save()
+            print(arg.id)
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
