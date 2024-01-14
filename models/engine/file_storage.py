@@ -18,14 +18,19 @@ class FileStorage:
         FileStorage.__objects[key] = obj
     def save(self):
         with open(FileStorage.__file_path, "w", encoding="utf-8") as jsonfile:
-            tempdict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
-            json.dump(tempdict, jsonfile)
+            temp_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(temp_dict, jsonfile)
     def reload(self):
         if not os.path.isfile(FileStorage.__file_path):
             return
         with open(FileStorage.__file_path, "r", encoding="utf-8") as jsonfile:
-            tempdict = json.load(f)
+            tempdict = json.load(jsonfile)
             tempdict = {k: self.classes()[v["__class__"]](**v)
-                        for k, v in obj_dict.items()}
+                        for k, v in tempdict.items()}
             FileStorage.__objects = tempdict
+    def classes(self):
+        """Returns a dictionary of valid classes and their references."""
+        from models.base_model import BaseModel
 
+        classes = {"BaseModel": BaseModel}
+        return classes
