@@ -25,5 +25,7 @@ class FileStorage:
             return
         with open(FileStorage.__file_path, "r", encoding="utf-8") as jsonfile:
             tempdict = json.load(f)
+            tempdict = {k: self.classes()[v["__class__"]](**v)
+                        for k, v in obj_dict.items()}
             FileStorage.__objects = tempdict
 
