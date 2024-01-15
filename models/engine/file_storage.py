@@ -57,5 +57,9 @@ class FileStorage:
 
         from models.base_model import BaseModel
 
-        classes = {"BaseModel": BaseModel}
+        classes = {"BaseModel": BaseModel,
+                "Place": Place,
+                "City": City,
+                "Amenity": Amenity,
+                "Review": Review}
         return classes
