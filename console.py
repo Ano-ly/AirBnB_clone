@@ -112,7 +112,6 @@ class HBNBCommand(cmd.Cmd):
             for instance in check_dict.keys():
                 print_list.append(str(check_dict[instance]))
             print(print_list)
-            print("\n\n{}\n\n".format(len(print_list)))
         elif len(arg) != 0:
             if arg not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
@@ -121,7 +120,6 @@ class HBNBCommand(cmd.Cmd):
                     if instance.startswith(arg):
                         print_list.append(str(check_dict[instance]))
                 print(print_list)
-                print("\n\n{}\n\n".format(len(print_list)))
 
     def do_update(self, arg):
         """
