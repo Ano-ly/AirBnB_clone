@@ -26,7 +26,8 @@ class HBNBCommand(cmd.Cmd):
         "City",
         "Amenity",
         "Place",
-        "Review"
+        "Review",
+        "User"
     }
 
     def emptyline(self):
