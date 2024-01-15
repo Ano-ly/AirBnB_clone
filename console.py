@@ -3,6 +3,7 @@
 
 
 import cmd
+import re
 from models import storage
 from models.base_model import BaseModel
 from models.state import State
@@ -10,6 +11,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -120,6 +122,17 @@ class HBNBCommand(cmd.Cmd):
                     if instance.startswith(arg):
                         print_list.append(str(check_dict[instance]))
                 print(print_list)
+
+    def onecmd(self, line):
+        """Overwrite precmd"""
+
+        if re.match("^[A-Za-z]+.[a-z]+()", line):
+            str_list = line.split(".")
+            str = str_list[1]
+            str_list[1] = str.strip("()")
+            super().onecmd(" ".join(reversed(str_list)))
+        else:
+            super().onecmd(line)
 
     def do_update(self, arg):
         """
