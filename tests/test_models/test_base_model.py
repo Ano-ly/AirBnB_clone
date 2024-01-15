@@ -18,10 +18,6 @@ class Test_Base_Model(unittest.TestCase):
         self.Base1 = BaseModel()
         self.assertEqual(self.Base1.updated_at, self.Base1.created_at)
 
-    #def test_init_(self):
-        """Tests the initialisation of a basemodel object"""
-
-
     def test_save(self):
         """Test the save method of the class BaseModel"""
 

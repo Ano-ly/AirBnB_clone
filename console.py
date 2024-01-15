@@ -45,7 +45,9 @@ class HBNBCommand(cmd.Cmd):
             print(arg.id)
 
     def do_show(self, arg):
-        """Prints the string representation of instances"""
+        """
+        Prints the string representation of instances
+        """
 
         if len(arg) == 0:
             print("** class name missing **")
@@ -65,7 +67,9 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Destroys an instance"""
+        """
+        Destroys an instance
+        """
 
         if len(arg) == 0:
             print("** class name missing **")
@@ -82,7 +86,9 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_all(self, arg):
-        """Prints the string representation of all instances"""
+        """
+        Prints the string representation of all instances
+        """
 
         check_dict = storage.all()
         print_list = []
@@ -100,7 +106,9 @@ class HBNBCommand(cmd.Cmd):
                 print(print_list)
 
     def do_update(self, arg):
-        """Updates an object"""
+        """
+        Updates an object stored in the file
+        """
 
         if len(arg) == 0:
             print("** class name missing **")
