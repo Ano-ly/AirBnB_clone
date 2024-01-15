@@ -5,6 +5,11 @@
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -16,7 +21,13 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     __classes = {
-        "BaseModel"
+        "BaseModel",
+        "State",
+        "City",
+        "Amenity",
+        "Place",
+        "Review",
+        "User"
     }
 
     def emptyline(self):
@@ -37,12 +48,14 @@ class HBNBCommand(cmd.Cmd):
 
         if len(arg) == 0:
             print("** class name missing **")
-        elif arg not in HBNBCommand.__classes:
-            print("** class doesn't exist **")
-        else:
-            arg = BaseModel()
-            storage.save()
-            print(arg.id)
+        elif len(arg) != 0:
+            args_list = arg.split()
+            if args_list[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                arg = eval(args_list[0])()
+                storage.save()
+                print(eval(args_list[0])().id)
 
     def do_show(self, arg):
         """
