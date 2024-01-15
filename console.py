@@ -47,12 +47,14 @@ class HBNBCommand(cmd.Cmd):
 
         if len(arg) == 0:
             print("** class name missing **")
-        elif arg not in HBNBCommand.__classes:
-            print("** class doesn't exist **")
-        else:
-            arg = BaseModel()
-            storage.save()
-            print(arg.id)
+        elif len(arg) != 0:
+            args_list = arg.split()
+            if args_list[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                arg = eval(args_list[0])()
+                storage.save()
+                print(eval(args_list[0])().id)
 
     def do_show(self, arg):
         """
