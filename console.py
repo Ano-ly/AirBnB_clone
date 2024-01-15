@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 arg = eval(args_list[0])()
                 storage.save()
-                print(eval(args_list[0])().id)
+                print(arg.id)
 
     def do_show(self, arg):
         """
