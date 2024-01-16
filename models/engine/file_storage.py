@@ -64,10 +64,10 @@ class FileStorage:
         from models.user import User
 
         classes = {"BaseModel": BaseModel,
-                "State": State,
-                "Place": Place,
-                "City": City,
-                "Amenity": Amenity,
-                "Review": Review,
-                "User": User}
+                   "State": State,
+                   "Place": Place,
+                   "City": City,
+                   "Amenity": Amenity,
+                   "Review": Review,
+                   "User": User}
         return classes

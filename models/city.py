@@ -3,7 +3,8 @@
 
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
     """class representing city"""
-    state_id=""
-    name=""
+    state_id = ""
+    name = ""
