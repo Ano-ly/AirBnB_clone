@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
     def onecmd(self, line):
         """Overwrite precmd"""
 
-        if re.match("^[A-Za-z]+\.[a-z]+\(\"[a-z0-9\-]*\"\)", line):
+        if re.match("^[A-Za-z]+\.[a-z]+\(\".*\"\)", line):
             str_list = line.split(".")
             id_list = str_list[1].split("(")
             str_list[1] = id_list[0]
