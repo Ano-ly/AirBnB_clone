@@ -103,6 +103,22 @@ class HBNBCommand(cmd.Cmd):
                     del (check_dict[check_str])
                     storage.save()
 
+    def do_count(self, arg):
+        """Counts the number of instances in a class"""
+
+        if len(arg) == 0:
+            print("** class name missing **")
+        elif len(arg) != 0:
+            if arg not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                count = 0
+                check_dict = storage.all()
+                for instance in check_dict.keys():
+                    if instance.startswith(arg):
+                        count += 1
+                print(count)
+
     def do_all(self, arg):
         """
         Prints the string representation of all instances
@@ -124,9 +140,9 @@ class HBNBCommand(cmd.Cmd):
                 print(print_list)
 
     def onecmd(self, line):
-        """Overwrite precmd"""
+        """Overwrite onecmd"""
 
-        if re.match("^[A-Za-z]+\.[a-z]+\(\".*\"\)", line):
+        if re.match("^[A-Za-z]+\.[a-z]+\((\".*\")?\)", line):
             str_list = line.split(".")
             id_list = str_list[1].split("(")
             str_list[1] = id_list[0]
