@@ -152,7 +152,9 @@ class HBNBCommand(cmd.Cmd):
             #str_list[1] = str.strip("()")
             super().onecmd(" ".join(reversed(str_list)))
         else:
-            super().onecmd(line)
+            val = super().onecmd(line)
+            if val:
+                return True
 
     def do_update(self, arg):
         """
