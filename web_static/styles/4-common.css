@@ -13,6 +13,10 @@ body {
   margin-bottom: 30px;
 }
 
+button:hover {
+	background-color: rgb(255, 90, 95, .9);
+}
+
 button {
 	background-color: #FF5A5F;
 	font-size: 18px;
@@ -23,3 +27,4 @@ button {
 	float: right;
 	margin-right: 30px;
 }
+
